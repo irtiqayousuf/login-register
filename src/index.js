@@ -10,7 +10,9 @@ import Dboard from './components/dashboard/dashboard';
 import reportWebVitals from './reportWebVitals';
 import Forgotpass from './components/login/forgot-password';
 import Resetpass from './components/login/reset-password'
-import Customers from './components/dashboard/customer-data';
+import Basic from './components/dashboard/basic';
+import Standard from './components/dashboard/standard';
+import Premium from './components/dashboard/premium';
 import { ThemeProvider } from '@mui/material';
 import theme from "./theme";
 import StripeContainer from "./Stripe/StripeContainer";
@@ -26,7 +28,9 @@ root.render(
           <Route path="/dashboard" component={Dboard}/>   
           <Route path="/forgot" component={Forgotpass}/>  
           <Route path="/reset/:token" component={Resetpass}/>  
-          <Route path="/customer" component={Customers}/> 
+          <Route path="/basic" component={Basic}/> 
+          <Route path="/standard" component={Standard}/> 
+          <Route path="/premium" component={Premium}/> 
           <Route path="/pricing" component={Pricing}/> 
           <Route component={NotFound} />
         </Switch>

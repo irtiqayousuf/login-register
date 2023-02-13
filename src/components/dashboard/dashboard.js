@@ -5,10 +5,11 @@ import { makeStyles } from '@mui/styles';
 import React from 'react';
 import Sidenav from './sidenav';
 import { Box } from '@mui/system';
-import {AppBar} from '@mui/material';
+import {AppBar, Button} from '@mui/material';
 import Navbar from './navbar';
 import { Grid,Card, CardContent
  } from '@mui/material';
+ import { useHistory } from 'react-router-dom';
 
  const useStyles= makeStyles((theme)=>({
     gradient:{
@@ -36,15 +37,20 @@ import { Grid,Card, CardContent
     app:{
         backgroundColor:"#004d4d" ,
         color:"white",
-        padding:'20px',
-        borderRadius:'5px'
+        padding:'17px',
+        borderRadius:'5px',
+        fontSize:"25px",
     },
+    btn:{
+        justifyContent:"center",
+        alignItems:"center",
+      },
 }));
 
 
 export default function Dboard(){
      const classes= useStyles();
-
+     const history=useHistory();
     return(
         <>
         <div className={classes.bgcolor}>
@@ -112,20 +118,41 @@ export default function Dboard(){
             </Card> 
             </Stack> 
             <Stack spacing={1} className={classes.home}  direction="row">
-                                    <Card sx={{ minWidth: 146 + "%", height: 350, background: "" }} className={classes.gradient}>
+                                    <Card sx={{ minWidth: 146 + "%", height: 450, background: "" }} className={classes.gradient}>
                                         <CardContent>
                                             <Box>
                                             <div color='red'>
-                                                <AppBar position='static' variant='h1' className={classes.app}><b>Instructions:</b></AppBar>
+                                                <AppBar position='static' variant='h1' className={classes.app}><b>Follow The Given Below Instructions:</b></AppBar>
                                             </div>
+                                            
                                             <Typography variant=" subtitle2:h2" noWrapcomponent="div" sx={{ display: { xs: 'none', sm: 'block',padding:'15px',margin:'25px' } }}>
-                                            we will deliver a different system where some people will be able to use our API’s to get the secure transaction mechanism & will be able to login or making payments etc
+                                            <Stack margin={2} direction="column">
+                                            Step 1: Click on the proceed button given below.
+                                            </Stack>
+                                            <Stack margin={2} direction="column">
+                                            Step 2: Choose your plan and proceed.
+                                            </Stack> 
+                                            <Stack margin={2} direction="column">
+                                            Step 3: Now fill the details in the form and make payment.
+                                            </Stack>
+                                            <Stack margin={2} direction="column">
+                                            Step 4: After successful payment you will get otp on your registered number. 
+                                            </Stack>
+                                            <Stack margin={2} direction="column">
+                                            Step 5: Enter that given otp and you will be authorized user.
+                                            </Stack>
+                                            
                                                      </Typography>
+                                                     <Stack direction="row" spacing={1}  className={classes.btn}  >
+      <Button  variant="contained" onClick={()=>{history.push('/pricing')}}>Proceed</Button>
+    </Stack>
+             
+                                                   
           </Box>
                                         </CardContent>
+
                                     </Card>
-                                 
-                                </Stack>
+                                            </Stack>
          </Grid>
       
     </Grid>

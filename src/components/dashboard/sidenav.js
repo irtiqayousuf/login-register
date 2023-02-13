@@ -20,8 +20,9 @@ import ListItemText from '@mui/material/ListItemText';
 import MessageIcon from '@mui/icons-material/Message';
 import SettingsIcon from '@mui/icons-material/Settings';
 //import MailIcon from '@mui/icons-material/Mail';
-//import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAppStore } from '../../appStore';
+
 
 const drawerWidth = 240;
 
@@ -73,7 +74,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   export default function Sidenav() {
     const theme = useTheme();
     //const [open, setOpen] = React.useState(true);
-   // const navigate=useNavigate();
+   const history=useHistory();
    // const updateOpen=useAppStore((state)=>state.updateOpen);
     const open=useAppStore((state)=>(state.dopen));
   
@@ -90,7 +91,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
           </DrawerHeader>
           <Divider />
           <List>
-            {[<ListItem disablePadding sx={{ display: 'block' }} >
+            {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/dashboard')}}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -128,7 +129,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
                   >
                    <MessageIcon sx={{color:"#004d4d"}}/>
                   </ListItemIcon>
-                  <ListItemText primary="Messaging" sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>]}
               {[<ListItem disablePadding sx={{ display: 'block' }} >
@@ -148,7 +149,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
                   >
                    <SettingsIcon sx={{color:"#004d4d"}}/>
                   </ListItemIcon>
-                  <ListItemText primary="Setting" sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText primary="Logout" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>]}
           </List>

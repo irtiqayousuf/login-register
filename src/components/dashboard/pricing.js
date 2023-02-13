@@ -10,6 +10,9 @@ import Button from '@mui/material/Button';
 import SecurityIcon from '@mui/icons-material/Security';
 import { Grid,Card, CardContent
  } from '@mui/material';
+ import {useState, useEffect} from 'react';
+ import axios from 'axios';
+ import { useHistory } from 'react-router-dom';
 
  const useStyles= makeStyles((theme)=>({
     gradient:{
@@ -67,6 +70,21 @@ import { Grid,Card, CardContent
 
 export default function Dboard(){
      const classes= useStyles();
+     const history=useHistory();
+     useEffect(()=>{
+        getprice();
+     },[])
+
+     const [price, setPrice]= useState([]);
+     const getprice = async () => {
+        try {
+            const res = await axios.get('http://localhost:8080/pricing')
+            setPrice(res.data.url);
+        }
+        catch(error){
+            alert(error.msg);
+        }
+     }
 
     return(
         <>
@@ -95,62 +113,55 @@ export default function Dboard(){
     </Stack>
 </Box>
 
+
+
     <Grid container spacing={2}>
                <Grid item xs={8}>
+                
                <Stack spacing={4} direction="row">
-               <Card sx={{ minWidth: 45 +"%" ,height:400,  background:"linear-gradient(0deg, rgba(0,77,26,0.6420693277310925) 0%, rgba(0,77,48,0.8101365546218487) 53%, rgba(0,26,77,0.6448704481792717) 100%)"}}  className={classes.gradient}>
+               { price.map((i) => (
+               <Card key={i.id} sx={{ minWidth: 45 +"%" ,height:400,  background:"linear-gradient(0deg, rgba(0,77,26,0.6420693277310925) 0%, rgba(0,77,48,0.8101365546218487) 53%, rgba(0,26,77,0.6448704481792717) 100%)"}}  className={classes.gradient}>
                 <CardContent>
                     <Typography gutterBottom variant="h5" paddingBottom={3} component="div" sx={{color:"#fff"}}>
-                    <SecurityIcon/> Essential
+                    <SecurityIcon/> {i.title}
                     </Typography>
                     <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="white">
-                    The essential plan allows for unlimited social connections, custom domains, and user role management. You also get 2 more Actions.
-
+                     {i.subtitle}                    
                     </Typography>
                     <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="white">
-                    Pricing starts at $23/month for 1,000 monthly active users and scales to $228/month for 10,000 users.
+                   {i.subtitle2}
                     </Typography>
                 </CardContent> 
                 <Stack direction="row" spacing={1}  className={classes.btn}  >
-      <Button  variant="contained" >Make Payment</Button>
+{/*                   
+                    if(i.id == 1){
+                    <Button  variant="contained" onClick={()=>{history.push('/customer')}}>Free</Button>
+                       
+                    } else if(i.id == 2) {
+                        <Button  variant="contained" onClick={()=>{history.push('/dashboard')}}>Pay ₹100</Button>
+                    } else (i.id == 3) {
+                        <Button  variant="contained" onClick={()=>{history.push('/pricing')}}>Pay ₹300</Button>
+                    } */}
+                 <Button  variant="contained" onClick={()=> {
+                     if(i.id === 1){
+                        {history.push('/basic')}
+                    } else if(i.id === 2){
+                        {history.push('/standard')}
+                    } else {
+                        {history.push('/premium')}
+                    }
+                   
+                 }
+                   
+                    
+                    }>{i.price_id}</Button>
+                   
+      
     </Stack>
             </Card>
-
-            <Card sx={{ minWidth: 45 +"%", height:400,  background:"linear-gradient(0deg, rgba(0,12,77,0.6420693277310925) 0%, rgba(77,0,21,0.6448704481792717) 54%, rgba(67,0,77,0.8101365546218487) 100%)"}}  className={classes.gradient}>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" paddingBottom={3} component="div" sx={{color:"#fff"}}>
-                    <SecurityIcon/> Professional
-                    </Typography>
-                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="white">
-                    The professional plan adds features such as multifactor authentication, admin roles, the ability to connect an external database, and up to 10 Actions.
-
-                    </Typography>
-                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="white">
-                    Pricing starts at $240/month for 1,000 monthly active users and scales to $1,500/month
-                    </Typography>
-                </CardContent> 
-                <Stack direction="row" spacing={1}  className={classes.btn}  >
-      <Button  variant="contained" >Make Payment</Button>
-    </Stack>
-            </Card>
-            <Card sx={{ minWidth: 45 +"%" ,height:400,  background:"linear-gradient(0deg, rgba(0,5,76,0.6336659663865547) 0%, rgba(0,77,14,0.5972514005602241) 48%, rgba(0,60,77,0.6420693277310925) 100%)"}}  className={classes.gradient}>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" paddingBottom={3} component="div" sx={{color:"#fff"}}>
-                    <SecurityIcon/> Enterprise
-                    </Typography>
-                    <Typography gutterBottom variant="body3"paddingBottom={3} component="div" color="white">
-                    The Enterprise plan has a 99.99% SLA with enterprise support and advanced cloud deployment options. This tier also allows private deployments.
-
-                    </Typography>
-                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="white">
-                    Enterprise pricing is completely custom and requires you to speak to an Auth0 sales representative.
-                    </Typography>
-                </CardContent> 
-                <Stack direction="row" spacing={1}  className={classes.btn}  >
-      <Button  variant="contained" >Make Payment</Button>
-    </Stack>
-            </Card>
-            </Stack> 
+ ))}
+            </Stack>  
+          
          </Grid>
       
     </Grid>
