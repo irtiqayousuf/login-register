@@ -2,8 +2,8 @@ import React from 'react';
 import {Paper ,Grid, Input,Button} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import axios from "axios";
-import { useState  } from "react";
-import {useHistory} from 'react-router-dom';
+import { useState, useContext  } from "react";
+import { Link, useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
    
@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Forgotpass=()=>{
   
+  const [email, setEmail] = useState("")
   const history = useHistory();
 
   const formHandler = (e) => {
@@ -24,7 +25,7 @@ const Forgotpass=()=>{
             // return <Redirect to="/" />;
             localStorage.setItem("user",JSON.stringify(res.data));
           //  setTimeout(()=>{
-          //    history.push("/dashboard");
+          //    history.push("/login");
           //  },100)
         }
         else{
@@ -47,8 +48,8 @@ const Forgotpass=()=>{
                     <h2>Forget Password</h2>
                 </Grid>
                 <form  onSubmit={(e) => { formHandler(e) }}>
-                <Input  type='email' label='Email'required placeholder='Enter email' name='email' fullWidth />              
-                <Button type='submit' value='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Send Reset Code</Button>
+                <Input  type='email' label='Email'required placeholder='Enter email' name='email' fullWidth onChange={(e) => setEmail(e.target.value)}/>              
+                <Button type='submit' value='submit' color='primary' variant="contained" style={btnstyle} fullWidth >Send Reset Code</Button>
               </form>
                
             </Paper>
@@ -56,3 +57,6 @@ const Forgotpass=()=>{
     );
 }
 export default Forgotpass;
+
+
+

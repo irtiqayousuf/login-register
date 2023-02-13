@@ -13,17 +13,19 @@ import Resetpass from './components/login/reset-password'
 import Customers from './components/dashboard/customer-data';
 import { ThemeProvider } from '@mui/material';
 import theme from "./theme";
+import StripeContainer from "./Stripe/StripeContainer";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <ThemeProvider theme={theme}>
     <Router>
          <Switch>
+         {/* <StripeContainer/> */}
           <Route exact path="/" component={Login} />
           <Route path="/register"  component={Register}/>
           <Route path="/dashboard" component={Dboard}/>   
           <Route path="/forgot" component={Forgotpass}/>  
-          <Route path="/reset" component={Resetpass}/>  
+          <Route path="/reset/:token" component={Resetpass}/>  
           <Route path="/customer" component={Customers}/> 
           <Route path="/pricing" component={Pricing}/> 
           <Route component={NotFound} />

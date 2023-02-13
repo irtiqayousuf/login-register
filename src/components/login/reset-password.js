@@ -4,6 +4,7 @@ import { makeStyles } from '@mui/styles';
 import axios from "axios";
 import { useState  } from "react";
 import {useHistory} from 'react-router-dom';
+import { useParams, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -11,18 +12,23 @@ const useStyles = makeStyles((theme) => ({
 
 const Resetpass = () => {
     const history = useHistory();
+    const [password,setPassword] = useState("")
 
+    const {token} = useParams()
     const formHandler = (e) => {
+     
       e.preventDefault();
-      let newpassword = e.target[0].value;
-      let confirmpassword = e.target[1].value;
-      let config = { 'headers' : { 'Content-Type' : 'application/json', 'Authorization' : "Bearer 12228492498479284917491498" } };
-      axios.post("http://localhost:8080/new-password",{ newpassword : newpassword , confirmpassword : confirmpassword }, config).then(resp => {
-          console.log("res" ,resp.data);
+      let password = e.target[0].value;
+      let config = { 'headers' : { 'Content-Type' : 'application/json', 'Authorization' : "Bearer 12228492498479284917491498" },   body:JSON.stringify({
+        password,
+        token
+    }) };
+      axios.post(`http://localhost:8080/new-password/${token}`,{ password : password }, config).then(resp => {
+        
+      console.log("res" ,resp.data);
           let res = resp.data;
           if(!res.error && res.status === 200){
               // return <Redirect to="/" />;
-              localStorage.setItem("user",JSON.stringify(res.data));
              setTimeout(()=>{
                history.push("/login");
              },100)
@@ -48,9 +54,8 @@ const Resetpass = () => {
                 </Grid>
                 <form onSubmit={(e) => { formHandler(e) }}>
                     <Stack spacing={4} direction='column'>
-                    <Input type='password' label='New Password' required placeholder='New Password' name='password' fullWidth />
-                    <Input type='password' label='Confirm Password' required placeholder='Confirm Password' name='Confirm password' fullWidth />
-                    <Button type='submit' value='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Submit</Button>
+                    <Input type='password' label='New Password' required placeholder='New Password' name='password' fullWidth  onChange={(e)=>setPassword(e.target.value)} />
+                    <Button type='submit' value='Submit' color='primary' variant="contained" style={btnstyle} fullWidth>Submit</Button>
                 </Stack>
                 </form>
 
@@ -59,3 +64,5 @@ const Resetpass = () => {
 
 }
 export default Resetpass;
+
+
