@@ -21,13 +21,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { makeStyles } from '@mui/styles';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
         background: '#fff'
     },
     log: {
-        backgroundImage: `linear-gradient(90deg, rgba(0,77,77,0.7959558823529411) 0%, rgba(0,77,77,0.5018382352941176) 47%, rgba(0,77,77,0.3533788515406162) 100%),
+        backgroundImage: `linear-gradient(0deg, rgba(187,0,0,0.5998774509803921) 0%, rgba(48,58,46,0.6923144257703081) 100%),
       url('https://img.freepik.com/premium-vector/cyber-security-concept-with-tech-elements_23-2148530635.jpg?w=740')`,
         height: "750px",
         backgroundPosition: "center",
@@ -54,22 +55,24 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "5rem",
         padding: "30px",
         paddingLeft: "5px",
-        color: "#004d4d",
+        color: "black",
         paddingInline: "10px",
         background: "rgba(240, 240, 240, 0.3)",
-        boxShadow: "5px 10px #004d4d"
+        boxShadow: "5px 10px #bb0000"
     },
     txt: {
         padding: "10px",
     },
     glow: {
 
-        textShadow: " 5px 5px 5px white;",
+        fontWeight:"bold",
+        textShadow: " 1px 1px 2px white;",
     }
 
 }));
 
 const Register = () => {
+    const history=useHistory();
     const formHandler = (e) => {
         e.preventDefault();
         console.log("e",e);
@@ -81,11 +84,14 @@ const Register = () => {
         let config = { 'headers' : { 'Content-Type' : 'application/json' } };
         const response = axios.post("http://localhost:8080/createUser",{ name : name, email : email , password : password, phone: phone });
         console.log("Response ",response);
+        setTimeout(()=>{
+            history.push("/login");
+        })
       }
     
 
     const classes = useStyles();
-    const paperStyle = { padding: 30, height: '60vh', width: 280, margin: "10px auto", boxShadow: "5px 10px #004d4d" }
+    const paperStyle = { padding: 30, height: '60vh', width: 280, margin: "10px auto", boxShadow: "5px 10px #bb0000" }
     const btnstyle = { margin: '8px 0' }
     return (<>
         <AppBar className={classes.appBar} position="static">
@@ -107,7 +113,7 @@ const Register = () => {
 
         <Grid className={classes.log}>
             <Box className={classes.here}>
-                <Typography variant="h5" color="#004d4d" className={classes.glow}>
+                <Typography variant="h5" color="#bb0000" fontWeight="bold" className={classes.glow}>
                     E-AUTH-PROVIDER
                 </Typography>
                 <Box>Get Started<KeyboardArrowRightIcon fontSize="large" /></Box>
@@ -115,7 +121,7 @@ const Register = () => {
                 </Typography>
             </Box>
             <Paper elevation={10} style={paperStyle}>
-                <Grid align='center' color='#004d4d'>
+                <Grid align='center' color='#bb0000'>
                     <h2>Register</h2>
                 </Grid>
               <form onSubmit={(e)=>{ formHandler(e) }}> 
@@ -132,7 +138,7 @@ const Register = () => {
                 <Button className={classes.txt}  type='submit' value='Submit' color='primary' variant="contained" style={btnstyle} fullWidth startIcon={<HowToRegIcon/>}>SIGN UP</Button>
                 </form> 
                 <Typography className={classes.txt}  >Already have an account?
-                    <Link className={classes.txt}  href="/" >
+                    <Link className={classes.txt}  href="/login" >
                         Sign In
                     </Link>
                 </Typography>

@@ -73,14 +73,14 @@ const Login=()=>{
       let email = e.target[0].value;
       let password = e.target[2].value;
       let config = { 'headers' : { 'Content-Type' : 'application/json', 'Authorization' : "Bearer 12228492498479284917491498" } };
-      axios.post("http://localhost:8080/loginUser",{ email : email , password : password }, config).then(resp => {
+      axios.post("http://localhost:8080/AdminUser",{ email : email , password : password }, config).then(resp => {
           console.log("res" ,resp.data);
           let res = resp.data;
           if(!res.error && res.status === 200){
               // return <Redirect to="/" />;
               localStorage.setItem("user",JSON.stringify(res.data));
              setTimeout(()=>{
-               history.push("/dashboard");
+               history.push("/adminDashboard");
              },100)
           }
           else{
@@ -150,12 +150,7 @@ const Login=()=>{
                         Forgot password?
                 </Link>
                 </Typography>
-                <Typography > Don't have an account?
-                     <Link href="/register" >
-                        Sign Up 
-                </Link>
-                </Typography>
-                </form>
+            </form>
             </Paper>
         </Grid>
         </>

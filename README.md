@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+please scan this qr to pay
+qr code img 
+if your payment is success please click on next
+
+Api url localhost:8080
+generate ur api access token in node js
+and onclick that button create function which generates a unique hash 10 to 12 digits key 
+store that key in this user's data base (regenerate for key) using bcrypt and apply in react
+instructions-> api documentation for how to implement

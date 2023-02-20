@@ -23,8 +23,9 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { useHistory } from 'react-router-dom';
 import { useAppStore } from '../../appStore';
 import { useParams } from 'react-router-dom';
-import Profile from './profile';
-
+import GetCustomers from './getcustomers';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 const drawerWidth = 240;
 
@@ -92,7 +93,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
           </DrawerHeader>
           <Divider />
           <List>
-            {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/dashboard')}}>
+            {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/admindashboard')}}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -112,8 +113,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
                   <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>]}
-  
-              {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/profile')}}>
+              {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/newadmin')}}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -128,12 +128,33 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
                       justifyContent: 'center',
                     }}
                   >
-                   <MessageIcon sx={{color:"#bb0000"}}/>
+                   <GroupAddIcon sx={{color:"#bb0000"}}/>
                   </ListItemIcon>
-                  <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText primary="Add New Admin" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>]}
-              {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/logout')}}>
+  
+              {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/getcustomers')}}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                   <HowToRegIcon sx={{color:"#bb0000"}}/>
+                  </ListItemIcon>
+                  <ListItemText primary="Registered Customers" sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>]}
+              {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/adminlogout')}}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,

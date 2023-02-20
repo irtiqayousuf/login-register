@@ -44,12 +44,12 @@ const Resetpass = () => {
     }
 
     const classes = useStyles();
-    const paperStyle = { padding: 30, height: '40vh', width: 300, margin: "70px auto", boxShadow: "5px 10px #004d4d" }
+    const paperStyle = { padding: 30, height: '40vh', width: 300, margin: "70px auto", boxShadow: "5px 10px #bb0000" }
     const btnstyle = { margin: '45px 0' }
     return (
         <>
             <Paper elevation={10} style={paperStyle}>
-                <Grid align='center' color='#004d4d'>
+                <Grid align='center' color='black'>
                     <h2>Reset Password</h2>
                 </Grid>
                 <form onSubmit={(e) => { formHandler(e) }}>

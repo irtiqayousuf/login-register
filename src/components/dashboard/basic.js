@@ -11,6 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import axios from "axios";
 import { makeStyles } from '@mui/styles';
+import { useHistory } from 'react-router-dom';
 
 const useStyles= makeStyles((theme)=>({
 
@@ -23,7 +24,7 @@ const useStyles= makeStyles((theme)=>({
 
 
 export default function Basic(){
-
+  const history=useHistory();
   const classes= useStyles();
   const [value, setValue] = React.useState('v1');
 
@@ -32,26 +33,31 @@ export default function Basic(){
     };
     const formHandler = (e) => {
         e.preventDefault();
-        console.log("e",e);
+        console.log(e);
         let plan  = e.target[0].value
         let website = e.target[1].value;
         let name = e.target[2].value;
         let phone = e.target[3].value;
         let email = e.target[4].value;
+       
         
         let config = { 'headers' : { 'Content-Type' : 'application/json' } };
-        const response = axios.post("http://localhost:8080/saveCustomer",{plan:plan, website : website, name : name , phone : phone, email: email });
-        console.log("Response ",response);
-      }
-    
-
+        axios.post("http://localhost:8080/saveCustomer",{ plan:plan, website: website, name:name,phone:phone,email:email }, config).then(resp => {
+            console.log("res" ,resp.data);
+            localStorage.setItem("customer",JSON.stringify(resp.data));
+            setTimeout(()=>{
+              history.push("/qrcode");
+            },10)
+         
+      })
+    }
    const paperStyle={padding :20,height:'80vh',width:500, margin:"10px auto",  boxShadow:"5px 5px #004d4d"}
     const btnstyle={margin:'40px 0' }
     return(
         <>
           <Navbar />
         <Box height={60} paddingTop={20} >
-     //</Box> <Box sx={{ display: 'flex' }}>
+     </Box> <Box sx={{ display: 'flex' }}>
          <Sidenav/>
        
          <Paper elevation={24} style={paperStyle}  variant="outlined" >
@@ -60,10 +66,10 @@ export default function Basic(){
                 </Grid>
                 <form onSubmit={(e)=>{ formHandler(e) }}>
                 <Stack spacing={4} direction="row" paddingBottom={5}>
-                <Input  type='text' label='Plan'required placeholder='Basic' name='plan' value='Basic Plan' fullWidth />
+                <Input  type='text' label='Plan' required placeholder='Basic' name='plan' value='Basic Plan' fullWidth />
                 </Stack>
                   <Stack spacing={4} direction="row" paddingBottom={5}>
-                <Input  type='text' label='Website'required placeholder='URL of Website' name='website' fullWidth />
+                <Input  type='text' label='Website' required placeholder='URL of Website' name='website' fullWidth />
                 <Input type='text' label='Name' required placeholder='Name of website owner' name='name' fullWidth />
                 </Stack>
                 <Stack spacing={4} direction="row" paddingBottom={5}>
@@ -92,7 +98,8 @@ export default function Basic(){
                </FormControl>
               
                 <Stack spacing={1} direction="row" className={classes.btn}  >
-                <Button type='submit' value='Submit' color='primary' variant="contained"   >Proceed</Button>
+                <Button type='submit' value='Submit' color='primary' variant="contained">Proceed</Button>
+                <Button type='submit'  color='primary' variant="contained"   onClick={()=>{history.push('/pricing')}} >Go Back</Button>
                
                 </Stack>
                 </form>
