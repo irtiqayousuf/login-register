@@ -3,7 +3,7 @@ import Sidenav from "./sidenav";
 import Box from '@mui/material/Box';
 import Navbar from "./navbar";
 import { makeStyles } from '@mui/styles';
-import { Grid ,Paper,Button} from "@mui/material";
+import { Grid ,Paper,Button, Typography} from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useHistory } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
@@ -14,7 +14,7 @@ import TableContainer from '@mui/material/TableContainer';
 import { useParams } from 'react-router-dom';
 import TableRow from '@mui/material/TableRow';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
 
@@ -56,7 +56,7 @@ function Profile() {
     const {id}= useParams();
     const classes= useStyles();
     const [userProfile, setProfile] = useState({});
-    const paperStyle={padding :20,height:'55vh',width:500, margin:"10px auto",  boxShadow:"5px 5px #bb0000"}
+    const paperStyle={padding :20,height:'65vh',width:500, margin:"10px auto",  boxShadow:"5px 5px #bb0000"}
     const btnstyle={margin:'40px 0' }
    // const id= localStorage.getItem('_id');
     const name = JSON.parse(localStorage.getItem('user'));
@@ -72,28 +72,25 @@ function Profile() {
   return (
     <>
      <Navbar />
-        <Box height={50} paddingTop={20} >
-       
-     </Box> 
-     <Box sx={{ display: 'cover' }} >
+       <Box sx={{ display: 'cover',backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')` }}  paddingTop={20}>
          <Sidenav/>
        
          <Paper elevation={24} style={paperStyle}  variant="outlined" className={classes.tbl} >
                 <Grid align='center'>
-                    <h2><AdminPanelSettingsIcon /> User Profile Details</h2>
+                     <Typography variant='h6' color={"#bb0000"}><AdminPanelSettingsIcon />User Profile Details</Typography>
                 </Grid>
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 70 }} aria-label="customized table">
+      <Table sx={{ minWidth: 70 ,marginTop: 2}} aria-label="customized table">
         <TableBody>
         <Stack spacing={2}>
             <StyledTableRow >
-              <StyledTableCell align="left"> <DriveFileRenameOutlineIcon color="primary"/> <b> Name :</b>  {userProfile.name}</StyledTableCell>
+              <StyledTableCell align="left"> <PersonIcon color="primary"/> <b> Name :</b>  {userProfile.name}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow >
-              <StyledTableCell align="left"> <EmailIcon color="secondary" /> <b> Email :</b> {userProfile.email}</StyledTableCell>
+              <StyledTableCell align="left"> <EmailIcon color="primary" /> <b> Email :</b> {userProfile.email}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow >
-              <StyledTableCell align="left"> <PermPhoneMsgIcon color="success"/> <b> Phone :</b> {userProfile.phone}</StyledTableCell>
+              <StyledTableCell align="left"> <PermPhoneMsgIcon color="primary"/> <b> Phone :</b> {userProfile.phone}</StyledTableCell>
             </StyledTableRow>
             </Stack>
         </TableBody>

@@ -17,6 +17,7 @@ import {
 }
     from '@mui/material';
 import IconButton from '@mui/material/IconButton';
+import VpnLockOutlinedIcon from '@mui/icons-material/VpnLockOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { makeStyles } from '@mui/styles';
@@ -91,7 +92,7 @@ const Register = () => {
     
 
     const classes = useStyles();
-    const paperStyle = { padding: 30, height: '60vh', width: 280, margin: "10px auto", boxShadow: "5px 10px #bb0000" }
+    const paperStyle = { padding: 30, height: '65vh', width: 280, margin: "10px auto", boxShadow: "5px 10px #bb0000" }
     const btnstyle = { margin: '8px 0' }
     return (<>
         <AppBar className={classes.appBar} position="static">
@@ -103,10 +104,10 @@ const Register = () => {
                     aria-label="menu"
                     sx={{ mr: 2 }}
                 >
-                    <MenuIcon />
+                    <VpnLockOutlinedIcon />
                 </IconButton>
                 <Typography variant="h6" color="white">
-                    E-AUTH-PROVIDER
+                AUTHENTICATION SYSTEM API
                 </Typography>
             </Toolbar>
         </AppBar>
@@ -114,7 +115,7 @@ const Register = () => {
         <Grid className={classes.log}>
             <Box className={classes.here}>
                 <Typography variant="h5" color="#bb0000" fontWeight="bold" className={classes.glow}>
-                    E-AUTH-PROVIDER
+                AUTHENTICATION SYSTEM API
                 </Typography>
                 <Box>Get Started<KeyboardArrowRightIcon fontSize="large" /></Box>
                 <Typography variant="h6" className={classes.subtitle}>We provide secure and more effective authentications

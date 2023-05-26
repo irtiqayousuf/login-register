@@ -50,7 +50,7 @@ export default function Basic(){
          
       })
     }
-   const paperStyle={padding :20,height:'80vh',width:500, margin:"10px auto",  boxShadow:"5px 5px #004d4d"}
+   const paperStyle={padding :20,height:'95vh',width:500, margin:"10px auto",  boxShadow:"5px 5px #bb0000"}
     const btnstyle={margin:'40px 0' }
     return(
         <>

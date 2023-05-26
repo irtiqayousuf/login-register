@@ -16,10 +16,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import WebhookIcon from '@mui/icons-material/Webhook';
 //import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MessageIcon from '@mui/icons-material/Message';
 import SettingsIcon from '@mui/icons-material/Settings';
 //import MailIcon from '@mui/icons-material/Mail';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import { useHistory } from 'react-router-dom';
 import { useAppStore } from '../../appStore';
 import { useParams } from 'react-router-dom';
@@ -91,7 +94,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
             </IconButton>
           </DrawerHeader>
           <Divider />
-          <List>
+          <List sx={{backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')`}}>
             {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/dashboard')}}>
                 <ListItemButton
                   sx={{
@@ -112,7 +115,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
                   <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>]}
-  
+              <Divider />
+
               {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/profile')}}>
                 <ListItemButton
                   sx={{
@@ -128,11 +132,57 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
                       justifyContent: 'center',
                     }}
                   >
-                   <MessageIcon sx={{color:"#bb0000"}}/>
+                   <AccountCircleIcon sx={{color:"#bb0000"}}/>
                   </ListItemIcon>
                   <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>]}
+              <Divider />
+
+              {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/api')}} >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                   <WebhookIcon sx={{color:"#bb0000"}}/>
+                  </ListItemIcon>
+                  <ListItemText primary="Developer API" sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>]}
+              <Divider />
+              
+              {[<ListItem disablePadding sx={{ display: 'block' }} >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                   <AssessmentIcon sx={{color:"#bb0000"}}/>
+                  </ListItemIcon>
+                  <ListItemText primary="Reports" sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>]}
+              <Divider />
+
               {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/logout')}}>
                 <ListItemButton
                   sx={{
@@ -153,6 +203,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
                   <ListItemText primary="Logout" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>]}
+              
           </List>
           <Divider />
          

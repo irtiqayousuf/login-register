@@ -22,17 +22,18 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
       background: '#fff'
   },
-  log: {
-      backgroundImage: ` linear-gradient(0deg, rgba(226,1,1,0.6643032212885154) 0%, rgba(48,58,46,0.7371323529411764) 100%),
-    url('https://img.freepik.com/premium-vector/cyber-security-concept-with-tech-elements_23-2148530635.jpg?w=740')`,
-      height: "auto",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      position: "relative",
-      display: "flex",
-      color:"white"
-  },
+   log: {
+        backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')`,
+        height: "auto",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        position: "relative",
+        display: "flex",
+        color:"white",
+        alignContent:"center",
+        justifyContent:"center"
+    },
   boxtbl: {
       fontFamily: "Bebas Neue cursive",
       justifyContent: "center",
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
       alignItems: "center",
       color: "#fff",
       fontSize: "4rem",
-      width:"1300px",
+      width:"1100px",
   },
   txt: {
     fontFamily: "Bebas Neue cursive",
@@ -57,7 +58,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 15,
-    color: "white",
+    color: "black",
     fontWeight:"bold",
   },
 }));
@@ -109,7 +110,7 @@ export default function CustomizedTables() {
             <StyledTableCell align="center">Name</StyledTableCell>
             <StyledTableCell align="center">Phone</StyledTableCell>
             <StyledTableCell align="center">Email</StyledTableCell>
-            <StyledTableCell align="center">View</StyledTableCell>
+            <StyledTableCell align="center">Token</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -121,7 +122,7 @@ export default function CustomizedTables() {
               <StyledTableCell align="center">{customer.name}</StyledTableCell>
               <StyledTableCell align="center">{customer.phone}</StyledTableCell>
               <StyledTableCell align="center">{customer.email}</StyledTableCell>
-              <StyledTableCell align="center"  sx={{ minWidth: 100, color:"white"}}><Link  sx={{ textDecoration:"none", color:"yellow"}}href="#">View</Link></StyledTableCell>
+              <StyledTableCell align="center"  sx={{ minWidth: 100, color:"white"}}><Link  sx={{ textDecoration:"none", color:"green"}}href="#">Generated</Link></StyledTableCell>
            
             </StyledTableRow>
           ))}

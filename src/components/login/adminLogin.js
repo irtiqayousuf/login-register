@@ -12,6 +12,7 @@ import axios from "axios";
 import { useState  } from "react";
 import {useHistory} from 'react-router-dom';
 import Stack from '@mui/material/Stack';
+import VpnLockOutlinedIcon from '@mui/icons-material/VpnLockOutlined';
 
 
 
@@ -78,7 +79,7 @@ const Login=()=>{
           let res = resp.data;
           if(!res.error && res.status === 200){
               // return <Redirect to="/" />;
-              localStorage.setItem("user",JSON.stringify(res.data));
+              localStorage.setItem("admin",JSON.stringify(res.data));
              setTimeout(()=>{
                history.push("/adminDashboard");
              },100)
@@ -107,10 +108,10 @@ const Login=()=>{
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+        <VpnLockOutlinedIcon />
           </IconButton>
           <Typography variant="h5" color="white">
-           E-AUTH-PROVIDER
+          AUTHENTICATION SYSTEM API
           </Typography>
          
         </Toolbar>
@@ -120,7 +121,7 @@ const Login=()=>{
        
 <Box className={classes.here}>
          <Typography variant="h5" color="#bb0000" fontWeight="bold" className={classes.glow}>
-           E-AUTH-PROVIDER
+         AUTHENTICATION SYSTEM API
           </Typography>
           <Typography variant="h2" color="white" fontWeight="bold" >
           Get Started
@@ -132,7 +133,7 @@ const Login=()=>{
             <Paper elevation={10} style={paperStyle}>
             <form onSubmit={(e)=>{ formHandler(e) }} >
                 <Grid align='center'>
-                    <h2>Sign In</h2>
+                    <h2>Admin Sign In</h2>
                 </Grid>
                 <Stack spacing={3} direction="column">
                 <TextField className={classes.txt} type='email' name="email" label='Email' required placeholder='Enter email' fullWidth />

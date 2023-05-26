@@ -4,7 +4,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { makeStyles } from '@mui/styles';
 import React from 'react';
 import Sidenav from './sidenav';
-import { Box } from '@mui/system';
+import { Box, textAlign } from '@mui/system';
 import Navbar from './navbar';
 import Button from '@mui/material/Button';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -16,8 +16,7 @@ import { Grid,Card, CardContent
 
  const useStyles= makeStyles((theme)=>({
     gradient:{
-        background:"#004d4d",
-   
+        background:"#004d4d",   
     },
     gradientLight:{
         background :"rgb(112, 195, 205)",
@@ -32,6 +31,18 @@ import { Grid,Card, CardContent
         minHeight: "100vh",
         background: "#eceff1",
         background: "#eceff1",
+    },
+    log: {
+        backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')`,
+        height: "auto",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        position: "relative",
+        display: "flex",
+        color:"white",
+        alignContent:"center",
+        justifyContent:"center"
     },
       here:{
        fontFamily: "Bebas Neue cursive",
@@ -97,7 +108,7 @@ export default function Dboard(){
          <Box component="main" sx={{ flexGrow: 1, p:2}} spacing={1} >
          <Box className={classes.here}>
          <Stack spacing={3}direction="row" paddingBottom={1} className={classes.head}>
-         <Typography variant="h5" color="#004d4d" fontWeight="bold" className={classes.glow}>
+         <Typography variant="h5" color="#bb0000" fontWeight="bold" className={classes.glow}>
           PRICING PLAN
           </Typography>
           </Stack>
@@ -118,20 +129,20 @@ export default function Dboard(){
     <Grid container spacing={2}>
                <Grid item xs={8}>
                 
-               <Stack spacing={4} direction="row">
+               <Stack spacing={4} direction="row" paddingLeft={10}>
                { price.map((i) => (
-               <Card key={i.id} sx={{ minWidth: 45 +"%" ,height:400,  background:"linear-gradient(0deg, rgba(187,0,0,0.5998774509803921) 0%, rgba(48,58,46,0.6923144257703081) 100%)"}}  className={classes.gradient}>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" paddingBottom={3} component="div" sx={{color:"#fff"}}>
-                    <SecurityIcon/> {i.title}
+               <Card key={i.id} className={classes.log} sx={{ minWidth: 70 +"%" ,height:500,textAlign: 'center'}} >
+                <CardContent  paddingBottom={3}>
+                    <Typography gutterBottom variant="h5" paddingBottom={3} component="div" sx={{color:"#bb0000"}}>
+                    <SecurityIcon sx={{color:"#bb0000"}}/> {i.title}
                     </Typography>
-                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="white">
+                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="#000000">
                      {i.subtitle}                    
                     </Typography>
-                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="white">
+                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="#000000">
                    {i.subtitle2}
                     </Typography>
-                </CardContent> 
+           
                 <Stack direction="row" spacing={1}  className={classes.btn}  >
                  <Button  variant="contained" onClick={()=> {
                      if(i.id === 1){
@@ -145,6 +156,7 @@ export default function Dboard(){
                  }
  }>{i.price_id}</Button>
     </Stack>
+    </CardContent>
             </Card>
  ))}
             </Stack>  

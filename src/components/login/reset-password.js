@@ -23,18 +23,14 @@ const Resetpass = () => {
         password,
         token
     }) };
-      axios.post(`http://localhost:8080/new-password/${token}`,{ password : password }, config).then(resp => {
+      axios.post(`http://localhost:8080/new-password/${token}`,{ password : password , token: token }, config).then(resp => {
         
-      console.log("res" ,resp.data);
-          let res = resp.data;
-          if(!res.error && res.status === 200){
+               if(resp.status === 200){
               // return <Redirect to="/" />;
-             setTimeout(()=>{
                history.push("/login");
-             },100)
-          }
+                      }
           else{
-              alert(res.message);
+              alert(resp.message);
           }
   
       },(err) => {

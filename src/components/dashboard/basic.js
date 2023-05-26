@@ -46,12 +46,12 @@ export default function Basic(){
             console.log("res" ,resp.data);
             localStorage.setItem("customer",JSON.stringify(resp.data));
             setTimeout(()=>{
-              history.push("/qrcode");
+              history.push("/token-details");
             },10)
          
       })
     }
-   const paperStyle={padding :20,height:'80vh',width:500, margin:"10px auto",  boxShadow:"5px 5px #004d4d"}
+   const paperStyle={padding :20,height:'95vh',width:500, margin:"10px auto",  boxShadow:"5px 5px #bb0000",backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')`}
     const btnstyle={margin:'40px 0' }
     return(
         <>
@@ -66,7 +66,7 @@ export default function Basic(){
                 </Grid>
                 <form onSubmit={(e)=>{ formHandler(e) }}>
                 <Stack spacing={4} direction="row" paddingBottom={5}>
-                <Input  type='text' label='Plan' required placeholder='Basic' name='plan' value='Basic Plan' fullWidth />
+                <Input  type='text' label='Plan' required placeholder='Basic' name='plan' value='Free Plan' fullWidth />
                 </Stack>
                   <Stack spacing={4} direction="row" paddingBottom={5}>
                 <Input  type='text' label='Website' required placeholder='URL of Website' name='website' fullWidth />
@@ -90,8 +90,7 @@ export default function Basic(){
                         value={value}
                         onChange={handleChange}
                       >
-                    <FormControlLabel value="v1" control={<Radio />} label="0 to 100,000" />
-                    <FormControlLabel value="v2" control={<Radio />} label="100,000 to 700,000" />
+                    <FormControlLabel value="v1" control={<Radio />} label="0 to 100" />
                        </RadioGroup>
                      
                 </Stack>  

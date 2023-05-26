@@ -92,7 +92,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
             </IconButton>
           </DrawerHeader>
           <Divider />
-          <List>
+          <List sx={{backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')`}}>
             {[<ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{history.push('/admindashboard')}}>
                 <ListItemButton
                   sx={{

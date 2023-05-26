@@ -12,6 +12,8 @@ import axios from "axios";
 import { useState  } from "react";
 import {useHistory} from 'react-router-dom';
 import Stack from '@mui/material/Stack';
+import VpnLockOutlinedIcon from '@mui/icons-material/VpnLockOutlined';
+
 
 
 
@@ -94,7 +96,7 @@ const Login=()=>{
     }
 
     const classes = useStyles();
-    const paperStyle={padding :30,height:'50vh',width:280, margin:"10px auto",  boxShadow:"5px 10px #bb0000"}
+    const paperStyle={padding :30,height:'55vh',width:280, margin:"10px auto",  boxShadow:"5px 10px #bb0000"}
     const btnstyle={margin:'8px 0'}
     return(
 <>
@@ -107,10 +109,10 @@ const Login=()=>{
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+           <VpnLockOutlinedIcon />
           </IconButton>
           <Typography variant="h5" color="white">
-           E-AUTH-PROVIDER
+          AUTHENTICATION SYSTEM API
           </Typography>
          
         </Toolbar>
@@ -120,7 +122,7 @@ const Login=()=>{
        
 <Box className={classes.here}>
          <Typography variant="h5" color="#bb0000" fontWeight="bold" className={classes.glow}>
-           E-AUTH-PROVIDER
+         AUTHENTICATION SYSTEM API
           </Typography>
           <Typography variant="h2" color="white" fontWeight="bold" >
           Get Started
@@ -132,7 +134,7 @@ const Login=()=>{
             <Paper elevation={10} style={paperStyle}>
             <form onSubmit={(e)=>{ formHandler(e) }} >
                 <Grid align='center'>
-                    <h2>Sign In</h2>
+                    <h2>User Sign In</h2>
                 </Grid>
                 <Stack spacing={3} direction="column">
                 <TextField className={classes.txt} type='email' name="email" label='Email' required placeholder='Enter email' fullWidth />

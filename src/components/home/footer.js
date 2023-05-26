@@ -6,9 +6,10 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 const useStyles = makeStyles((theme) => ({
     footerContainer: {
+      padding :"20px ",
         backgroundColor: "bb0000",
         color:'white',
-    paddingBottom:"20px",
+        paddingBottom:"20px",
         position: "relative",
       },
       iconButton: {
@@ -37,7 +38,7 @@ export default function Footer() {
         >
        
       </IconButton>
-      <Typography variant='body1' component='h4' align='center' backgroundColor="#bb0000" color='white'>
+      <Typography variant='body1' component='h4' align='center' backgroundColor="#bb0000" color='white' padding="20px">
         Developed and designed by
         Irtiqa, Insha and Rasheeqa , All Right Reserved © {date.getFullYear()}
       </Typography>

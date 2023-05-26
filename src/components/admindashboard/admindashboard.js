@@ -18,13 +18,13 @@ import TableContainer from '@mui/material/TableContainer';
 import { useParams } from 'react-router-dom';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import EmailIcon from '@mui/icons-material/Email';
-import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
 import TableHead from '@mui/material/TableHead';
 import axios from 'axios';
 import AdjustIcon from '@mui/icons-material/Adjust';
+import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
+import BrowserUpdatedOutlinedIcon from '@mui/icons-material/BrowserUpdatedOutlined';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 
  const useStyles= makeStyles((theme)=>({
     gradient:{
@@ -35,11 +35,10 @@ import AdjustIcon from '@mui/icons-material/Adjust';
         background :"rgb(112, 195, 205)",
         background: "#eceff1"
     },
-    iconStyle:{
-        marginTop: "20px",
-        marginLeft:"20px",
-        color:"#fff",
-    },
+    iconStyle: {
+      marginTop: "0px",        
+      color: "#bb0000",
+  },
     bgcolor:{
         minHeight: "100vh",
         background: "#eceff1",
@@ -129,61 +128,60 @@ export default function AdminDashboard(){
          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
     <Grid container spacing={2}>
                <Grid item xs={8}>
-               <Stack spacing={4} direction="row">
-               <Card sx={{ minWidth: 33 +"%" ,height:150,  background:"linear-gradient(0deg, rgba(187,0,0,0.5998774509803921) 0%, rgba(48,58,46,0.6923144257703081) 100%)"}}  className={classes.gradient}>
-                <CardContent>
-                    <div className={classes.iconStyle}>
-                        <MailOutlineIcon/>
-                    </div>
-                    <Typography gutterBottom variant="h5" component="div" sx={{color:"#fff"}}>
-                    SMS Today
-                    </Typography>
-                    <Typography gutterBottom variant="body3" component="div" color="white">
-                   100
-                    </Typography>
-                </CardContent> 
-            </Card>
-
-            <Card sx={{ minWidth: 33 +"%" ,height:150, background:"linear-gradient(0deg, rgba(187,0,0,0.5998774509803921) 0%, rgba(48,58,46,0.6923144257703081) 100%)"}} className={classes.gradientLight}>
-                <CardContent>
-                    <div className={classes.iconStyle}>
-                        <MailOutlineIcon/>
-                    </div>
-                    <Typography gutterBottom variant="h5" component="div" sx={{color:"white"}}>
-                    SMS This Week
-                    </Typography>
-                    <Typography gutterBottom variant="body3" component="div" sx={{color:"white"}}>
-                   500
-                    </Typography>
-                </CardContent> 
-            </Card>
-            <Card sx={{ minWidth: 33 +"%" ,height:150, background:"linear-gradient(0deg, rgba(187,0,0,0.5998774509803921) 0%, rgba(48,58,46,0.6923144257703081) 100%)"}} className={classes.gradient}>
-                <CardContent>
-                <div className={classes.iconStyle}>
-                        <MailOutlineIcon/>
-                    </div>
-                    <Typography gutterBottom variant="h5" component="div" sx={{color:"white"}}>
-                    SMS This Month
-                    </Typography>
-                    <Typography gutterBottom variant="body3" component="div" sx={{color:"white"}}>
-                   2000
-                    </Typography>
-                </CardContent> 
-            </Card>
-            <Card sx={{ minWidth: 33 +"%" ,height:150, background:"linear-gradient(0deg, rgba(187,0,0,0.5998774509803921) 0%, rgba(48,58,46,0.6923144257703081) 100%)" }} className={classes.gradientLight}>
-                <CardContent>
-                <div className={classes.iconStyle}>
-                        <MailOutlineIcon/>
-                    </div>
-                    <Typography gutterBottom variant="h5" component="div" sx={{color:"white"}}>
-                    SMS This Year
-                    </Typography>
-                    <Typography gutterBottom variant="body3" component="div" sx={{color:"white"}}>
-                    10000
-                    </Typography>
-                </CardContent> 
-            </Card> 
-            </Stack> 
+               <Stack spacing={1} direction="row" >
+                                    <Card sx={{ minWidth: 37 + "%", height: 250, textAlign: 'center',backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')` }} >
+                                        <CardContent >
+                                            <div className={classes.iconStyle}>
+                                                <FeedOutlinedIcon fontSize='large'/>
+                                            </div>
+                                            <Typography gutterBottom variant="h6" component="div" sx={{ color: "#bb0000" }}>
+                                            Round The Clock Bulk SMS Delivery
+                                            </Typography>
+                                            <Typography gutterBottom variant="body3" component="div" color="#000000">
+                                            Send Transactional SMS 24/7 to update your clients 
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                    <Card sx={{ minWidth: 37 + "%", height: 250, textAlign: 'center',backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')` }} >
+                                        <CardContent >
+                                            <div className={classes.iconStyle}>
+                                                <BrowserUpdatedOutlinedIcon fontSize='large'/>
+                                            </div>
+                                            <Typography gutterBottom variant="h6" component="div" sx={{ color: "#bb0000" }}>
+                                            100% Instant Bulk Sms Delivery
+                                            </Typography>
+                                            <Typography gutterBottom variant="body3" component="div" color="#000000">
+                                            Using our api, your clients would get 100% assured instant delivery within no time!
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                    <Card sx={{ minWidth: 37 + "%", height: 250, textAlign: 'center',backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')` }} >
+                                        <CardContent >
+                                            <div className={classes.iconStyle}>
+                                                <ShoppingBagOutlinedIcon fontSize='large'/>
+                                            </div>
+                                            <Typography gutterBottom variant="h6" component="div" sx={{ color: "#bb0000" }}>
+                                            Easy to Use Bulk Sms Panel UI
+                                            </Typography>
+                                            <Typography gutterBottom variant="body3" component="div" color="#000000">
+                                            Our Easy to Use Api Panel would make a non-technical person to handle their Bulk sms campaign on his own. Its just a click and go.
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                    <Card sx={{ minWidth: 37 + "%", height: 250, textAlign: 'center',backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')` }} >
+                                        <CardContent >
+                                            <div className={classes.iconStyle}>
+                                                <LocalMallOutlinedIcon fontSize='large'/>
+                                            </div>
+                                            <Typography gutterBottom variant="h6" component="div" sx={{ color: "#bb0000" }}>
+                                            Generate Leads Using Bulk Sms Marketing
+                                            </Typography>
+                                            <Typography gutterBottom variant="body3" component="div" color="#000000">
+                                            Using our online Bulk sms marketing tool you would be able to generate a good business leads for your company.
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                </Stack>
             <Stack spacing={1} className={classes.home}  direction="row">
                                     <Card sx={{ minWidth: 146 + "%", height: 450, background: "" }} className={classes.gradient}>
                                         <CardContent>

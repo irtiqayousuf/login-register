@@ -14,7 +14,6 @@ import Forgotpass from './components/login/forgot-password';
 import Resetpass from './components/login/reset-password'
 import Basic from './components/dashboard/basic';
 import Standard from './components/dashboard/standard';
-import Premium from './components/dashboard/premium';
 import QRCode from './components/dashboard/qrcode';
 import Profile from './components/dashboard/profile';
 import { ThemeProvider } from '@mui/material';
@@ -26,9 +25,11 @@ import AdminLogout from './components/admindashboard/adminlogout';
 import RegisterAdmin from './components/admindashboard/newadmin';
 import GetToken from './components/dashboard/getToken';
 import Message from './components/dashboard/msg';
-
-
-
+import KeyDetails from './components/dashboard/key';
+import Api from './components/dashboard/apis';
+import SingleView from './components/admindashboard/singleview';
+import ProtectedRoute from "./components/protectedroutes"
+import PrivateRoute from './components/privateroutes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -39,22 +40,23 @@ root.render(
           <Route path="/login" component={Login} />
           <Route path="/adminLogin" component={AdminLogin} />
           <Route path="/register"  component={Register}/>
-          <Route path="/newadmin"  component={RegisterAdmin}/>
-          <Route path="/dashboard" component={Dboard}/> 
-          <Route path="/admindashboard" component={AdminDashboard}/>  
+          <PrivateRoute path="/newadmin"  component={RegisterAdmin}/>
+          <ProtectedRoute path="/dashboard" component={Dboard}/> 
+          <PrivateRoute path="/admindashboard" component={AdminDashboard}/>  
           <Route path="/forgot" component={Forgotpass}/>  
           <Route path="/reset/:token" component={Resetpass}/>  
-          <Route path="/basic" component={Basic}/> 
-          <Route path="/standard" component={Standard}/> 
-          <Route path="/premium" component={Premium}/> 
-          <Route path="/pricing" component={Pricing}/> 
-          <Route path="/qrcode" component={QRCode}/> 
-          <Route path='/profile' component={Profile}/> 
-          <Route path='/getcustomers' component={GetCustomers}/> 
-          <Route path='/logout' component={Logout}/> 
-          <Route path='/adminlogout' component={AdminLogout}/> 
-          <Route path='/getToken' component={GetToken}/> 
+          <ProtectedRoute path="/basic" component={Basic}/> 
+          <ProtectedRoute path="/standard" component={Standard}/> 
+          <ProtectedRoute path="/pricing" component={Pricing}/> 
+          <ProtectedRoute path="/qrcode" component={QRCode}/> 
+          <ProtectedRoute path='/profile' component={Profile}/> 
+          <PrivateRoute path='/getcustomers' component={GetCustomers}/> 
+          <ProtectedRoute path='/logout' component={Logout}/> 
+          <PrivateRoute path='/adminlogout' component={AdminLogout}/> 
+          <ProtectedRoute path='/token-details' component={GetToken}/> 
           <Route path ='/msg' component={Message}/>
+          <ProtectedRoute path='/api' component={Api}/>
+          <Route path="/singleview" component={SingleView}/>
           <Route component={NotFound} />
         </Switch>
   </Router>

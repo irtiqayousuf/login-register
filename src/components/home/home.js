@@ -3,6 +3,7 @@ import './home.css';
 import { makeStyles } from '@mui/styles';
 import { Grid,Paper, Avatar, TextField,Box, Button, Typography} from '@mui/material'
 import IconButton from '@mui/material/IconButton';
+import VpnLockOutlinedIcon from '@mui/icons-material/VpnLockOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Checkbox from '@mui/material/Checkbox';
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    minHeight: '77vh',
+    minHeight: '70vh',
     paddingTop:'100px',
   },
   content: {
@@ -62,11 +63,13 @@ const useStyles = makeStyles((theme) => ({
   },
   abt:{
     color: '#bb0000',
-    padding: '50px',
+    padding: '25px',
     textAlign: 'center',
   },
   abt2:{
     textAlign: 'center',
+    color: '#bb0000',
+    padding: '35px',
   },
   btn:{
     justifyContent:"right",
@@ -177,7 +180,7 @@ const Blog = () => {
     const response = axios.post("http://localhost:8080/email",{ email:email,msg : msg });
     console.log("Response ",response);
   }
-  const paperStyle = { padding: 20, height: '30vh', width: 480, margin: "10px auto",backgroundColor:"white" }
+  const paperStyle = { padding: 30, height: '35vh', width: 400, margin: "25px auto",backgroundColor:"white" }
   const btnstyle = { margin: '8px 0' }
   return (
     <>
@@ -185,16 +188,16 @@ const Blog = () => {
        <Box direction="row" sx={{paddingBlock:'8px' }}> 
     <Toolbar>
     <IconButton
-        size="large"
+        fontSyize="large"
         edge="start"
         color="inherit"
         aria-label="menu"
         sx={{ mr: 2 }}
       >
-        <MenuIcon />
+        <VpnLockOutlinedIcon />
       </IconButton>
-      <Typography variant="h5" color="white" paddingRight={45} href="/">
-       E-AUTH-PROVIDER
+      <Typography variant="h6" color="white" paddingRight={25} href="/">
+      AUTHENTICATION SYSTEM API
       </Typography>
       <Stack spacing={4} direction="row" className={classes.btn} paddingRight={45} >
       {menuItems.map((menuItem) => (
@@ -290,32 +293,34 @@ verify the user is authenticated.
                 <b>Security</b><br/><br/>
                 The only truly secure system is one that is powered off, cast in a block of concrete and sealed in a lead-lined room with armed guards.
                 </Typography>
-                <SyncLockIcon fontSize="large" /> <Typography variant="body1" color='primary2'>
+                <Stack spacing={4} direction='row'>
+                <SyncLockIcon fontSize="large" sx={{alignItems:"center",paddingLeft:8}}/> <Typography variant="body1" color='primary2'>
                 <b>Privacy</b><br/><br/>
                 It used to be expensive to make things public and cheap to make them private. Now it’s expensive to make things private and cheap to make them public.
                 </Typography>
                 </Stack>
+                </Stack>
                 </Box>
      </div>
 
-    <div id="services" className={classes.abt}>
+    <div id="services" className={classes.abt2}>
         <Typography variant="h3"><MiscellaneousServicesIcon fontSize='large'/> Our Services</Typography><br/>
         <Typography variant="body1" paddingBottom={5} color="black">
         Our business is protecting yours. Our Commitment is Keeping you Safe. Our Concern is Security. Peace of mind is a matter of choice
         </Typography>
         <Grid container spacing={2}>
                <Grid item xs={8}>
-               <Stack spacing={4} direction="row">
+               <Stack spacing={4} direction="row" paddingLeft={30}>
                { price.map((i) => (
-               <Card key={i.id} sx={{ minWidth: 48 +"%" ,height:300,  background:"linear-gradient(0deg, rgba(187,0,0,0.7791491596638656) 0%, rgba(48,58,46,0.6923144257703081) 91%)"}}  className={classes.gradient}>
+               <Card key={i.id} sx={{ minWidth: 70 +"%" ,height:410, backgroundImage: `url('https://img.freepik.com/premium-vector/abstract-white-gray-background-texture-with-many-triangles-vector-illustration_532963-2323.jpg')`}}  className={classes.gradient}>
                 <CardContent>
-                    <Typography gutterBottom variant="h5" paddingBottom={3} component="div" sx={{color:"#fff"}}>
+                    <Typography gutterBottom variant="h5" paddingBottom={3} component="div" sx={{color:"#bb0000"}}>
                     <SecurityIcon/> {i.title}
                     </Typography>
-                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="white">
+                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="#000000">
                      {i.subtitle}                    
                     </Typography>
-                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="white">
+                    <Typography gutterBottom variant="body3" paddingBottom={3} component="div" color="#000000">
                    {i.subtitle2}
                     </Typography>
                 </CardContent> 
@@ -325,10 +330,10 @@ verify the user is authenticated.
          </Grid>
     </Grid>
     </div>
-    <div id="contact" className={classes.contact}>
-        <Box className={classes.abt}>
+    <div id="contact" className={classes.abt}>
+    <Box >
     <Typography variant="h3"><PhoneLockedIcon fontSize='large'/> Contact Us </Typography><br/>
-        <Typography variant="body1" paddingBottom={1} color="black">
+        <Typography variant="body1" paddingBottom={3} color="black">
         We would love to hear from you. Contact us, our team is always ready to support and solve your issues.
         Our business is protecting yours.Our Concern is Security.
         </Typography>
@@ -336,7 +341,7 @@ verify the user is authenticated.
     <Box className={classes.section}>
       <ScrollAnimation animateIn='fadeIn'>
         <Container maxWidth='xl'>
-          <Grid container spacing={10}>
+          <Grid container spacing={15}>
             <Grid item sm={5}>
               <Box component={Hidden} xsDown>
               <Box padding={5} className={classes.cont} paddingTop={7}> 
@@ -359,7 +364,7 @@ verify the user is authenticated.
             </Grid>
             <Grid item xs={12} sm={7}>
              <Paper elevation={10} style={paperStyle}>
-                <Grid align='center' color='#004d4d'>
+                <Grid align='center' color='#bb0000'>
                <Typography variant="h5">
                     <Typed
             strings={["How Can We Help?"]}
@@ -386,7 +391,7 @@ verify the user is authenticated.
    
         </div>
 
-   <ArrowUpwardIcon href="/"/>
+   {/* <ArrowUpwardIcon href="/"/> */}
    <Footer/>
     </>
   );

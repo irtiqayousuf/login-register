@@ -90,7 +90,7 @@ export default function Basic(){
          
       })
     }
-   const paperStyle={padding :20,height:'60vh',width:400, margin:"10px auto",  boxShadow:"5px 5px #bb0000"}
+   const paperStyle={padding :20,height:'73vh',width:400, margin:"10px auto",  boxShadow:"5px 5px #bb0000"}
     const btnstyle={margin:'40px 0' }
     return(
         <>
@@ -126,10 +126,7 @@ export default function Basic(){
                 <Input type='email' label='Email' required placeholder='Email' name='email' fullWidth />
                 <Input type='password' label='Password' required placeholder='Password' name='password' fullWidth />
                 </Stack>
-                <Stack spacing={4} direction="row" paddingBottom={5}>
-                <Input type='text' label='Business Type' required placeholder='Business Type' name='business-type' fullWidth />
-                <Input type='text' label='StartUp' required placeholder='Business StartUp' name='business-startup' fullWidth />
-                </Stack>
+               
                 
             
               

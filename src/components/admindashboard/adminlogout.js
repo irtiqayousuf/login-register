@@ -13,7 +13,7 @@ export default function AdminLogout(){
         localStorage.clear();
         history.push("/");
      }
-    const paperStyle={padding :20,height:'40vh',width:600, margin:"15px auto",  boxShadow:"5px 5px #bb0000"}
+    const paperStyle={padding :20,height:'50vh',width:600, margin:"15px auto",  boxShadow:"5px 5px #bb0000"}
     return(
        <>
         <AdminNavbar />
